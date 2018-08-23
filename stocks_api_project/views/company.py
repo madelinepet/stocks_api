@@ -8,7 +8,7 @@ class CompanyAPIViewset(APIViewSet):
         # use the id to lookup that resource in the DB
         # formulate a response and send it back to the client
         return Response(
-            json={'message': f'Provided a single resource for {id}'},
+            json={'message': 'Provided a single resource'},
             status=200
             )
 
