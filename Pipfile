@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyramid-restful-framework = "*"
+stocks-api-project = {editable = true, path = ".", extras = ["testing"]}
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
