@@ -1,11 +1,13 @@
 from datetime import datetime as dt
 from sqlalchemy.exe import DBAPIError
+from sqlalchemy.orm import relationship
 from sqlalchemy import (
     Column,
     Index,
     Integer,
     Text,
-    DateTime
+    DateTime,
+    ForeignKey,
 )
 
 from .meta import Base
@@ -26,6 +28,9 @@ class Stock(Base):
 
     date_created = Column(DateTime, default=dt.now())
     date_updated = Column(DateTime, default=dt.now(), onupdate=dt.now())
+
+    account_id = Column(Integer, ForeignKey('accounts.id'), nullable=False)
+    accounts = relationship('Account', back_populated='stocks')
 
     @classmethod
     def new(cls, request=None, **kwargs):
