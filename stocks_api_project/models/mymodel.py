@@ -6,6 +6,8 @@ from sqlalchemy import (
 )
 
 from .meta import Base
+import requests
+
 
 
 class MyModel(Base):

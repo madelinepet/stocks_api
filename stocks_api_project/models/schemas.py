@@ -2,9 +2,7 @@ from marshmallow_sqlalchemy import ModelSchema
 from marshmallow_sqlalchemy.fields import fields
 # marshmallow gets the records that belong to the ids in this fields and creates a list of role objects on the account when we send back the response to the client
 
-from . import (Stocks, Portfolio, Account, AccountRole)
-
-
+from . import (Stock, Portfolio, Account, AccountRole)
 
 
 class AccountRoleSchema(ModelSchema):
@@ -27,7 +25,7 @@ class StocksSchema(ModelSchema):
     ))
 
     class Meta:
-        model = Stocks
+        model = Stock
 
 
 class PortfolioSchema(ModelSchema):

@@ -1,10 +1,11 @@
 # TODO: finish this- refactor Resonse with 'created' to use a JSON web token
 
-from pyramid_restful_viewsets import APIViewSet
+from pyramid_restful.viewsets import APIViewSet
 from sqlalchemy.exc import IntegrityError
 from pyramid.response import Response
 from ..models import Account
 import json
+
 
 class AuthAPIViewset(APIViewSet):
     def create(self, request, auth=None):

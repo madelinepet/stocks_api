@@ -1,6 +1,6 @@
 # this is the file where the association between role and account lives
 # many: many relationship, any user can have many roles,
-
+import requests
 from sqlalchemy import Table, Column, Integer, ForeignKey
 # not importing base here from metadata because we are doing this a different way
 from .meta import metadata

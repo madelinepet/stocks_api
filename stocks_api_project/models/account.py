@@ -2,7 +2,8 @@ from .meta import Base
 from sqlalchemy.orm import relationship
 from .role import AccountRole
 from .associations import roles_association
-from stocks import Stock
+from .stocks import Stock
+import requests
 from datetime import datetime as dt
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy import(
@@ -11,7 +12,7 @@ from sqlalchemy import(
     Integer,
     String,
     Text,
-    Datetime,
+    DateTime,
 )
 
 
@@ -27,8 +28,8 @@ class Account(Base):
     stocks = relationship(Stock, back_populates='accounts')
     roles = relationship(AccountRole, secondary=roles_association, back_populates='accounts')
 
-    date_created = Column(Datetime, default=dt.now())
-    date_updated = Column(Datetime, default=dt.now(), onupdatye=dt.now())
+    date_created = Column(DateTime, default=dt.now())
+    date_updated = Column(DateTime, default=dt.now(), onupdate=dt.now())
 
     def __init__(self, email=None, password=None):
         """ Fix this to hash the password before storing it in the db!!!!

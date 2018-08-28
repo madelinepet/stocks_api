@@ -1,6 +1,7 @@
 import os
 import sys
 import transaction
+import requests
 
 from pyramid.paster import (
     get_appsettings,
@@ -15,7 +16,7 @@ from ..models import (
     get_session_factory,
     get_tm_session,
     )
-from ..models import (stocks, auth, portfolio, AccountRole)
+from ..models import (stocks, portfolio, AccountRole)
 
 
 def usage(argv):

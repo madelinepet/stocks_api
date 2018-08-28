@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from sqlalchemy.exe import DBAPIError
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy import (
     Column,
     Index,
@@ -7,6 +7,7 @@ from sqlalchemy import (
     Text,
     DateTime
 )
+import requests
 
 from .meta import Base
 

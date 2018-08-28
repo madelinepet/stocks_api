@@ -9,7 +9,8 @@ import zope.sqlalchemy
 from .stocks import Stock
 from .role import AccountRole
 from .account import Account
-from associations import roles_association
+from .associations import roles_association
+from .portfolio import Portfolio
 
 # run configure_mappers after defining all of the models to ensure
 # all relationships can be setup

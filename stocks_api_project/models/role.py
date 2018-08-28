@@ -1,6 +1,8 @@
 from .meta import Base
 from sqlalchemy.orm import relationship
 from .associations import roles_association
+import requests
+
 from sqlalchemy import (
     Column,
     Index,
