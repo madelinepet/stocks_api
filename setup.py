@@ -9,13 +9,16 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
 
 requires = [
+    'marshmallow_sqlalchemy',  # custom
     'plaster_pastedeploy',
+    'psycopg2-binary',  # custom
     'pyramid >= 1.9a',
     'pyramid_debugtoolbar',
     'pyramid_jinja2',
     'pyramid_retry',
-    'pyramid-restful-framework', # installed by us!
+    'pyramid-restful-framework',  # installed by us!
     'pyramid_tm',
+    'requests',  # custom
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
