@@ -3,7 +3,6 @@ from ..models import Stock
 from sqlalchemy.exc import IntegrityError, DataError
 from pyramid_restful.viewsets import APIViewSet
 from pyramid.response import Response
-from pyramid.view import view_config
 import requests
 import json
 
@@ -56,6 +55,3 @@ class StocksAPIViewset(APIViewSet):
         except(DataError, AttributeError):
                 return Response(json='Not Found', status=404)
         return Response(status=204)
-
-
-
