@@ -10,7 +10,7 @@ import json
 
 class StocksAPIViewset(APIViewSet):
     def create(self, request):
-        """ creates a resource
+        """ creates a resource in the database. The most robust of the methods.
         """
         try:
             kwargs = json.loads(request.body)
@@ -26,17 +26,26 @@ class StocksAPIViewset(APIViewSet):
         return Response(json=data, status=201)
 
     def list(self, request):
-        """ Gets all
+        """ Gets all records from the db using marshmallow schema to serialize
+        and send back the data in a response
         """
-        return Response(json={'message': 'Listing all the records'}, status=200)
+        records = Stock.all(request)
+        schema = StocksSchema()
+        data = [schema.dump(record).data for record in records]
+        return Response(json=data, status=200)
 
     def retrieve(self, request, id=None):
-        """ Gets one
+        """ Gets one record from the db using marshmallow like with list
         """
-        return Response(json={'message': 'Listing one record'}, status=200)
+        record = Stock.one(request, id)
+        if not record:
+            return Response(json='Not found', status=404)
+        schema = StocksSchema()
+        data = schema.dump(record).data
+        return Response(json=data, status=200)
 
     def destroy(self, request, id=None):
-        """ Destroys a resource
+        """ Destroys a resource from the db
         """
         if not id:
             return Response(status=204)

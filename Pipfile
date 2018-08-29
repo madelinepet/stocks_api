@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pyramid-restful-framework = "*"
 stocks-api-project = {editable = true, path = ".", extras = ["testing"]}
+requests = "*"
 
 [dev-packages]
 
