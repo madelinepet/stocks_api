@@ -10,6 +10,12 @@ Madeline Peters
 
 ## Routes
 /
-api/v1/portfolio
-api/v1/company
+
+api/v1/company/{symbol}/
+Example: http://localhost:6543/api/v1/company/msft/
+
+api/v1/portfolio/{symbol}/
+Example: http://localhost:6543/api/v1/portfolio/msft/
+
+
 api/v1/stock
