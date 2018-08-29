@@ -3,12 +3,10 @@ from sqlalchemy.orm import relationship
 from .role import AccountRole
 from .associations import roles_association
 from .stocks import Stock
-import requests
 from datetime import datetime as dt
 from sqlalchemy.exc import DBAPIError
-from sqlalchemy import(
+from sqlalchemy import (
     Column,
-    Index,
     Integer,
     String,
     Text,
