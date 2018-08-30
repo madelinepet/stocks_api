@@ -10,8 +10,8 @@ def includeme(config):
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
 
-    router = ViewSetRouter(config)
-    router.register('api/v1/portfolio', PortfolioAPIViewset, 'portfolio')
-    router.register('api/v1/company', CompanyAPIViewset, 'company')
-    router.register('api/v1/stock', StocksAPIViewset, 'stock')
+    router = ViewSetRouter(config, trailing_slash=False)
+    router.register('api/v1/portfolio', PortfolioAPIViewset, 'portfolio', permission='admin')
+    router.register('api/v1/company', CompanyAPIViewset, 'company', permission='view')
+    router.register('api/v1/stock', StocksAPIViewset, 'stock', permission='admin')
     router.register('api/v1/auth/{auth}', AuthAPIViewset, 'auth')

@@ -1,10 +1,13 @@
 from datetime import datetime as dt
 from sqlalchemy.exc import DBAPIError
+from sqlalchemy.orm import relationship
+from .stocks import Stock
 from sqlalchemy import (
     Column,
     Integer,
     Text,
-    DateTime
+    DateTime,
+    ForeignKey,
 )
 
 from .meta import Base
@@ -16,6 +19,10 @@ class Portfolio(Base):
     name = Column(Text)
     date_created = Column(DateTime, default=dt.now())
     date_updated = Column(DateTime, default=dt.now(), onupdate=dt.now())
+    account_id = Column(Integer, ForeignKey('accounts.id'), nullable=False)
+    # accounts below has to match the back_populates in the class Account
+    accounts = relationship('Account', back_populates='portfolios')
+    stocks = relationship(Stock, back_populates='portfolios')
 
     @classmethod
     def new(cls, request=None, **kwargs):
