@@ -9,6 +9,7 @@ Clone the repo, run "pipenv shell" in your command line. "pipenv install", "pser
 Madeline Peters
 
 ## Routes
+Home route
 /
 
 api/v1/company/{symbol}/
@@ -18,4 +19,8 @@ api/v1/portfolio/{symbol}/
 Example: http://localhost:6543/api/v1/portfolio/msft/
 
 
-api/v1/stock
+api/v1/stock/{symbol}/
+Example: http://localhost:6543/api/v1/portfolio/msft/
+
+/api/v1/visuals/{symbol}?type=candle
+Example: http://localhost:6543/api/v1/visuals/msft?type=candle
