@@ -14,7 +14,7 @@ class VisualizationAPIViewset(APIViewSet):
     def list(self, request, id=None):
         """ Gets the chart and saves as an html file when this route is hit
         """
-        res = requests.get(f'{API_URL}/stock/{id}/chart/5y')
+        res = requests.get(f'{API_URL}/stock/msft/chart/5y')
         data = res.json()
         df = pd.DataFrame(data)
         seqs = np.arange(df.shape[0])
