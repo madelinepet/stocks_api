@@ -9,6 +9,11 @@ stocks-api-project = {editable = true, path = ".", extras = ["testing"]}
 requests = "*"
 cryptacular = "*"
 pyramid-jwt = "*"
+jupyter = "*"
+matplotlib = "*"
+pandas = "*"
+numpy = "*"
+bokeh = "*"
 
 [dev-packages]
 
