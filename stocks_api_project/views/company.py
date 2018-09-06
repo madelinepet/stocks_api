@@ -16,4 +16,3 @@ class CompanyAPIViewset(APIViewSet):
     # An example
     # def list_all_companies(self, request):
     #     # http://localhost:6543/api/v1/company/
-
