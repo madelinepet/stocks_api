@@ -22,5 +22,12 @@ Example: http://localhost:6543/api/v1/portfolio/msft/
 api/v1/stock/{symbol}/
 Example: http://localhost:6543/api/v1/portfolio/msft/
 
-/api/v1/visuals/
-Example: http://localhost:6543/api/v1/visuals/
+/api/v1/visuals/{symbol}?type=candlestick
+Example: http://localhost:6543/api/v1/visuals/goog?type=candlestick
+
+/api/v1/visuals/{symbol}?type=bar
+Example: http://localhost:6543/api/v1/visuals/goog?type=bar
+
+/api/v1/visuals/{symbol}?type=volatility
+Example: http://localhost:6543/api/v1/visuals/goog?type=volatility
+
