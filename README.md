@@ -8,6 +8,9 @@ Clone the repo, run "pipenv shell" in your command line. "pipenv install", "pser
 ## Author
 Madeline Peters
 
+## Help
+Ben Hurst helped me figure out having the response be a chart instead of a hardcoded response!
+
 ## Routes
 Home route
 /

@@ -7,6 +7,7 @@ import bokeh.plotting as bk
 from bokeh.models import HoverTool, Label, BoxZoomTool, PanTool, ZoomInTool, ZoomOutTool, ResetTool
 import requests
 from urllib.parse import urlparse
+import codecs
 
 API_URL = 'https://api.iextrading.com/1.0'
 
@@ -52,7 +53,7 @@ class VisualizationAPIViewset(APIViewSet):
             p = bk.figure(plot_width=1500, plot_height=800, tools=TOOLS, title=f'{id.upper()}', toolbar_location='above')
             p.xaxis.major_label_orientation = np.pi/4
             p.grid.grid_line_alpha = w
-            descriptor = Label(x=70, y=70, text='Label goes here')
+            descriptor = Label(x=70, y=70, text=f'{id}')
             # adds label onto the chart
             p.add_layout(descriptor)
             # set up your outer tails, and then the rectangles that go inside of the tails
@@ -65,6 +66,12 @@ class VisualizationAPIViewset(APIViewSet):
                 f'./stocks_api_project/static/candle_stick_{id}.html',
                 title=f'5yr_candlestick_{id}'
             )
+            f = codecs.open(
+                f'./stocks_api_project/static/candle_stick_{id}.html',
+                'r'
+            )
+            body = f.read()
+            return Response(body=body, status=200)
 
         if chart_type == 'bar':
             res = requests.get(f'{API_URL}/stock/{id}/chart/5y')
@@ -92,6 +99,12 @@ class VisualizationAPIViewset(APIViewSet):
                 f'./stocks_api_project/static/year_versus_low_{id}.html',
                 title=f'5yr_low_bar_{id}'
             )
+            f = codecs.open(
+                f'./stocks_api_project/static/year_versus_low_{id}.html',
+                'r'
+            )
+            body = f.read()
+            return Response(body=body, status=200)
 
         if chart_type == 'volatility':
             res = requests.get(f'{API_URL}/stock/{id}/chart/5y')
@@ -119,5 +132,9 @@ class VisualizationAPIViewset(APIViewSet):
                 f'./stocks_api_project/static/volatility_{id}.html',
                 title=f'5yr_volitility_bar_{id}'
             )
-
-        return Response(json={'message': 'Listing the chart'}, status=200)
+            f = codecs.open(
+                f'./stocks_api_project/static/volatility_{id}.html',
+                'r'
+            )
+            body = f.read()
+            return Response(body=body, status=200)
