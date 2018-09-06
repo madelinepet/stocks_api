@@ -8,6 +8,9 @@ Clone the repo, run "pipenv shell" in your command line. "pipenv install", "pser
 ## Author
 Madeline Peters
 
+## Help
+Ben Hurst helped me figure out having the response be a chart instead of a hardcoded response!
+
 ## Routes
 Home route
 /
@@ -22,5 +25,12 @@ Example: http://localhost:6543/api/v1/portfolio/msft/
 api/v1/stock/{symbol}/
 Example: http://localhost:6543/api/v1/portfolio/msft/
 
-/api/v1/visuals/
-Example: http://localhost:6543/api/v1/visuals/
+/api/v1/visuals/{symbol}?type=candlestick
+Example: http://localhost:6543/api/v1/visuals/goog?type=candlestick
+
+/api/v1/visuals/{symbol}?type=bar
+Example: http://localhost:6543/api/v1/visuals/goog?type=bar
+
+/api/v1/visuals/{symbol}?type=volatility
+Example: http://localhost:6543/api/v1/visuals/goog?type=volatility
+
