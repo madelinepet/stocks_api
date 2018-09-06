@@ -11,10 +11,13 @@ API_URL = 'https://api.iextrading.com/1.0'
 
 
 class VisualizationAPIViewset(APIViewSet):
-    def list(self, request, id=None):
+    def retrieve(self, request, id=None):
         """ Gets the chart and saves as an html file when this route is hit
         """
-        res = requests.get(f'{API_URL}/stock/msft/chart/5y')
+        print('searchforthis')
+        res = requests.get(f'{API_URL}/stock/{id}/chart/5y')
+
+        print(res.text)
         data = res.json()
         df = pd.DataFrame(data)
         seqs = np.arange(df.shape[0])
@@ -44,7 +47,7 @@ class VisualizationAPIViewset(APIViewSet):
                 ]
         )
         TOOLS = [hover, BoxZoomTool(), PanTool(), ZoomInTool(), ZoomOutTool(), ResetTool()]
-        p = bk.figure(plot_width=1500, plot_height=800, tools=TOOLS, title='Microsoft', toolbar_location='above')
+        p = bk.figure(plot_width=1500, plot_height=800, tools=TOOLS, title=f'{id.upper()}', toolbar_location='above')
         p.xaxis.major_label_orientation = np.pi/4
         p.grid.grid_line_alpha = w
         descriptor = Label(x=70, y=70, text='Label goes here')
@@ -55,6 +58,6 @@ class VisualizationAPIViewset(APIViewSet):
         p.segment(df.seqs[dec], df.high[dec], df.seqs[dec], df.low[dec], color='red')
         p.rect(x='seqs', y='mid', width=w, height='height', fill_color='green', line_color='green', source=sourceInc)
         p.rect(x='seqs', y='mid', width=w, height='height', fill_color='red', line_color='red', source=sourceDec)
-        bk.save(p, './stocks_api_project/static/candle_stick.html', title='5yr_candlestick')
+        bk.save(p, f'./stocks_api_project/static/candle_stick_{id}.html', title=f'5yr_candlestick_{id}')
 
         return Response(json={'message': 'Listing the chart'}, status=200)
